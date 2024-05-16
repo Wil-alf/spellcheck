@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spell Checker Result</title>
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+                background-color: #8f8f8f;
+                margin: 0;
+                padding: 0;
+            }
+
+            h1 {
+                text-align: center;
+                color: #333;
+                margin-top: 50px;
+            }
+
+            p {
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin-left: 10px;
+                margin-right: 10px;
+                /* margin: 0; */
+            }
+
+            li {
+                background-color: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                margin-bottom: 10px;
+            }
+
+            li:hover {
+                background-color: #4a4a4a;
+            }
+
+            li::before {
+                content: "•";
+                color: #007bff;
+                font-weight: bold;
+                display: inline-block;
+                width: 1em;
+                margin-left: -1em;
+            }
+
+    </style>
+</head>
+<body>
+    <h1>Spell Checker Result</h1>
+    {% for word, suggestions in sentence_suggestions %}
+    <p>Word: {{ word }}</p>
+    <p>Suggestions:</p>
+    <ul>
+        {% for suggested_word, distance in suggestions %}
+        <li>{{ suggested_word }} (Distance: {{ distance }})</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</body>
+</html>
